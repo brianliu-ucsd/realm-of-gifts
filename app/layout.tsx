@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/next'
+
 export default function RootLayout({
   children,
 }: {
@@ -8,7 +10,10 @@ export default function RootLayout({
       <body style={{
         margin: 0,
         padding: 0
-      }}>{children}</body>
+      }}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
