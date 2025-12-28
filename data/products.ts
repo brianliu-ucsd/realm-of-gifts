@@ -1,16 +1,16 @@
 export const products = [
     {
-        title: 'Queen Size 4 Piece Sheet Set - Comfy Breathable & Cooling Bed Sheets Set - Hotel Luxury Bedding for Women, Men, Kids & Teens - Deep Pockets, Easy Secure Fit, Soft and Wrinkle Free - Oeko-Tex - White',
-        price: 24.99,
-        imageUrl: '/images/71b8fh-dQ4L._AC_SL1500_.jpg',
-        affiliateUrl: 'https://www.amazon.com/Queen-Size-Piece-Sheet-Set/dp/B01M16WBW1/ref=zg_bs_c_home-garden_d_sccl_1/133-0302145-2057925?pd_rd_w=Zs9nJ&content-id=amzn1.sym.fef9af56-6177-46e9-8710-a5293a68dd39&pf_rd_p=fef9af56-6177-46e9-8710-a5293a68dd39&pf_rd_r=CMNY77SJBBEGFCHE1NYV&pd_rd_wg=8q2sX&pd_rd_r=177f6dfb-0ef0-4787-a4f2-ab8df4e7f52a&pd_rd_i=B01M16WBW1&th=1',
+        title: 'bella 2 Slice Slim Toaster, Fits-anywhere™ Kitchenware, 6 Setting Shade Control with Reheat & Cancel Buttons, Fits sourdough, 10” Long Slot, Anti Jam & Auto Shutoff, 900 Watt, Blossom',
+        price: 24.98,
+        imageUrl: 'https://m.media-amazon.com/images/I/71RhijtzBxL._AC_SL1500_.jpg',
+        affiliateUrl: 'https://amzn.to/4jdXCTr',
         category: 'Home & Kitchen',
     },
     {
-        title: 'Amazon Basics 48-Pack AA Alkaline High-Performance Batteries, 1.5 Volt, 10-Year Shelf Life',
-        price: 14.99,
-        imageUrl: '/images/81iJ+tnLADL._AC_SL1500_.jpg',
-        affiliateUrl: 'https://www.amazon.com/AmazonBasics-Performance-Alkaline-Batteries-Count/dp/B00MNV8E0C/ref=zg_bs_c_hpc_d_sccl_1/133-0302145-2057925?pd_rd_w=gYvG9&content-id=amzn1.sym.fef9af56-6177-46e9-8710-a5293a68dd39&pf_rd_p=fef9af56-6177-46e9-8710-a5293a68dd39&pf_rd_r=CMNY77SJBBEGFCHE1NYV&pd_rd_wg=8q2sX&pd_rd_r=177f6dfb-0ef0-4787-a4f2-ab8df4e7f52a&pd_rd_i=B00MNV8E0C&th=1',
-        category: 'Health & Household',
+        title: 'Luditek 2-Pack Sound Activated Party Lights with Remote Control, Disco Ball Light, DJ Strobe Lamp for Home Room Dance Party Supplies White Elephant Gifts Birthday Christmas Halloween Party Decorations',
+        price: 16.99,
+        imageUrl: 'https://m.media-amazon.com/images/I/71tUVl4mMKL._AC_SL1500_.jpg',
+        affiliateUrl: 'https://amzn.to/4pUOZ2C',
+        category: 'Tools & Home Improvement',
     }
 ]

@@ -62,51 +62,39 @@ export default function Home() {
   return (
     <div
       style={{
-        height: "100vh",
+        height: "calc(100vh - 85px)", // Subtract navbar height (~83px) + small buffer
         width: "100vw",
         display: "flex",
         flexDirection: "column",
         background: "white",
-        overflow: "clip"
+        overflow: "hidden" // Changed from "clip" to "hidden"
       }}
     >
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
-          height={window.innerHeight}
+          height={window.innerHeight - 85} // Match container height
           numberOfPieces={numPieces}
           gravity={0.4}
           recycle={false}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            pointerEvents: 'none'
+          }}
         />
       )}
-
-      {/* NAVBAR */}
-      <header
-        style={{
-          flexBasis: "10%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "1.5rem",
-          fontWeight: "600",
-          color: "#92400e",
-          backgroundColor: "#fff8e1",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-        }}
-      >
-        🎁 Random Gift Generator
-      </header>
 
       {/* MAIN CONTENT */}
       <main
         style={{
-          flexBasis: "80%",
+          flex: 1,
           display: "flex",
           flexDirection: selectedProduct ? "row" : "column", // horizontal after spin
           alignItems: "center",
           justifyContent: selectedProduct ? "space-evenly" : "center",
           width: "100%",
-          height: "100%",
           padding: "2vh",
           boxSizing: "border-box",
         }}
@@ -190,14 +178,15 @@ export default function Home() {
       {/* FOOTER */}
       <footer
         style={{
-          flexBasis: "10%",
+          height: "60px", // Fixed height instead of percentage
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           fontSize: "0.9rem",
           color: "#78350f",
-          backgroundColor: "#fff8e1",
-          borderTop: "1px solid #fde68a",
+          backgroundColor: "#f8f4e8",
+          borderTop: "1px solid #e5dfd3",
+          flexShrink: 0, // Don't shrink
         }}
       >
         ⚠️ Disclaimer: These are Amazon affiliate links. As an Amazon Associate, we may earn from qualifying purchases.
