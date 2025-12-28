@@ -112,7 +112,7 @@ export default function Home() {
           <div style={{ position: "relative", width: "28vh", height: "28vh" }}>
             <img
               src="/images/wheel.png"
-              alt="Wheel"
+              alt="Wheel of Gifts"
               style={{
                 width: "100%",
                 height: "100%",
@@ -125,7 +125,7 @@ export default function Home() {
             />
             <img
               src="/images/pointer.png"
-              alt="Pointer"
+              alt="Wheel Pointer"
               style={{
                 position: "absolute",
                 top: "-2vh",
