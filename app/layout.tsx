@@ -39,6 +39,7 @@ export default function RootLayout({
           }}>
             <img
               src="/images/logo.png"
+              fetchPriority="high"
               alt="Realm of Gifts Logo"
               style={{
                 height: '50px',

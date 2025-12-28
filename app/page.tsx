@@ -112,6 +112,7 @@ export default function Home() {
           <div style={{ position: "relative", width: "28vh", height: "28vh" }}>
             <img
               src="/images/wheel.png"
+              fetchPriority="high"
               alt="Wheel of Gifts"
               style={{
                 width: "100%",
@@ -125,6 +126,7 @@ export default function Home() {
             />
             <img
               src="/images/pointer.png"
+              fetchPriority="high"
               alt="Wheel Pointer"
               style={{
                 position: "absolute",
