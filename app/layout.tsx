@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
+import styles from '../styles/Layout.module.css'
 
 export default function RootLayout({
   children,
@@ -12,60 +13,45 @@ export default function RootLayout({
         <title>Realm of Gifts | Random Gift Generator</title>
         <meta name="description" content="Not sure what to buy for your loved one or friend? Looking for a random product to buy? This Random Gift Generator will generate a random Amazon product to help inspire your purchase!"></meta>
       </head>
+      {/* Body does not support CSS components */}
       <body style={{
         margin: 0,
-        padding: 0
+        padding: 0,
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
       }}>
-        <style>{`
-          .navbar-link:hover {
-            color: #333333 !important;
-          }
-        `}</style>
         {/* Navbar */}
-        <nav style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '1rem 2rem',
-          backgroundColor: '#f8f4e8', // Light beige background
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)', // Subtle drop shadow
-          borderBottom: '1px solid #e5dfd3'
-        }}>
+        <nav className={styles.navbar}>
           {/* Logo and Site Name */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1rem'
-          }}>
+          <div className={styles.navbarLogo}>
             <img
               src="/images/logo.png"
               fetchPriority="high"
               alt="Realm of Gifts Logo"
-              style={{
-                height: '50px',
-                width: 'auto'
-              }}
             />
           </div>
 
           {/* About Us Link */}
           <a
             href="#about"
-            style={{
-              color: '#000000', // Black color
-              textDecoration: 'none',
-              fontSize: '1rem',
-              fontWeight: '500',
-              padding: '0.5rem 0',
-              transition: 'color 0.3s ease'
-            }}
-            className="navbar-link"
+            className={styles.navbarLink}
           >
             About Us
           </a>
         </nav>
 
-        {children}
+        {/* Main Content Area */}
+        <main className={styles.main}>
+          {children}
+        </main>
+
+        {/* Footer */}
+        <footer className={styles.footer}>
+          ⚠️ Disclaimer: These are Amazon affiliate links. As an Amazon Associate, we may earn from qualifying purchases.
+        </footer>
+
+        <Analytics />
       </body>
     </html>
   )
