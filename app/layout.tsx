@@ -25,11 +25,13 @@ export default function RootLayout({
         <nav className={styles.navbar}>
           {/* Logo and Site Name */}
           <div className={styles.navbarLogo}>
-            <img
-              src="/images/logo.png"
-              fetchPriority="high"
-              alt="Realm of Gifts Logo"
-            />
+            <a href="\">
+              <img
+                src="/images/logo.png"
+                fetchPriority="high"
+                alt="Realm of Gifts Logo"
+              />
+            </a>
           </div>
 
           {/* About Us Link */}

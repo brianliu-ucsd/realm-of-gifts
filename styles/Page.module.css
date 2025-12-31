@@ -91,6 +91,10 @@
   transition: background 0.3s;
 }
 
+.spinButton:hover {
+  background-color: #eab65b;
+}
+
 .spinButton:disabled {
   background-color: #d1d5db;
   cursor: not-allowed;

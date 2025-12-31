@@ -15,6 +15,10 @@
   gap: 1rem;
 }
 
+.navbarLogo:hover {
+  opacity: 0.8;
+}
+
 .navbarLogo img {
   height: 50px;
   width: auto;

@@ -73,3 +73,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.button:hover {
+    background-color: #eab65b;
+}
