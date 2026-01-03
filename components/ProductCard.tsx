@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/ProductCard.module.css";
+import Image from "next/image";
 
 type Product = {
   title: string;
@@ -20,6 +21,8 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.imageContainer}>
         <img
           src={product.imageUrl}
+          width={500}
+          height={500}
           alt={product.title}
           className={styles.image}
         />
