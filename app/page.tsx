@@ -13,6 +13,8 @@ export default function Home() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [numPieces, setNumPieces] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [spinJustFinished, setSpinJustFinished] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
 
   // Smart preloading system
   const [shuffledIndices, setShuffledIndices] = useState<number[]>(() => {
@@ -27,10 +29,10 @@ export default function Home() {
   const [currentShuffleIndex, setCurrentShuffleIndex] = useState(0);
   const [preloadedIndices, setPreloadedIndices] = useState<Set<number>>(new Set());
 
-  // Detect mobile/tablet screens
+  // Detect mobile screens
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 1024); // Tablet breakpoint
+      setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
@@ -64,6 +66,7 @@ export default function Home() {
   const handleSpin = (skipAnimation = false) => {
     if (isSpinning) return;
     setIsSpinning(true);
+    setSpinJustFinished(false);
 
     // Check if we've gone through all products, if so reshuffle
     let productIdx: number;
@@ -99,23 +102,39 @@ export default function Home() {
       setCurrentShuffleIndex(nextShuffleIndex);
       setIsSpinning(false);
       setShowConfetti(true);
+      setSpinJustFinished(true);
+      setTimeout(() => setSpinJustFinished(false), 700);
     };
 
     if (skipAnimation) {
-      // Instant result for mobile "Spin Again"
       showResult();
     } else {
-      // Full animation for initial wheel spin
       setTimeout(showResult, 3000);
     }
   };
+
+  // Determine classes
+  const containerClasses = [
+    styles.wheelContainer,
+    !isSpinning && !selectedProduct ? styles.wheelIdle : '',
+  ].filter(Boolean).join(' ');
+
+  const wheelClasses = [
+    styles.wheel,
+    isSpinning ? styles.wheelSpinning : '',
+  ].filter(Boolean).join(' ');
+
+  const pointerClasses = [
+    styles.pointer,
+    spinJustFinished ? styles.pointerBounce : '',
+  ].filter(Boolean).join(' ');
 
   return (
     <div className={styles.fullHeightContainer}>
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
-          height={window.innerHeight - 85} // Match container height
+          height={window.innerHeight}
           numberOfPieces={numPieces}
           gravity={0.4}
           recycle={false}
@@ -123,60 +142,109 @@ export default function Home() {
         />
       )}
 
+      {/* Filter Sidebar */}
+      <aside className={`${styles.filterSidebar} ${filterOpen ? styles.filterSidebarOpen : ''}`}>
+        <button
+          className={styles.sidebarClose}
+          onClick={() => setFilterOpen(false)}
+          aria-label="Close filters"
+        >
+          &times;
+        </button>
+        <h2 className={styles.sidebarTitle}>Filters</h2>
+        <p className={styles.sidebarPlaceholder}>
+          Filter by age range, gender, interests, and price range. Coming soon!
+        </p>
+      </aside>
+
+      {/* Backdrop */}
+      <div
+        className={`${styles.filterBackdrop} ${filterOpen ? styles.filterBackdropVisible : ''}`}
+        onClick={() => setFilterOpen(false)}
+      />
+
       {/* MAIN CONTENT */}
       {isMobile && selectedProduct ? (
-        // Mobile/Tablet: Single view after spin
+        // Mobile: Single view after spin
         <main className={styles.mainContent}>
           <div className={styles.productSection}>
             <ProductCard product={selectedProduct} />
           </div>
-          <button
-            onClick={() => handleSpin(true)}
-            disabled={isSpinning}
-            className={styles.spinButton}
-          >
-            {isSpinning ? "Spinning..." : "Spin Again"}
-          </button>
+          <div className={styles.buttonRow}>
+            <button className={styles.filterToggle} onClick={() => setFilterOpen(true)} aria-label="Open filters">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+                <circle cx="8" cy="6" r="2" fill="currentColor" />
+                <circle cx="16" cy="12" r="2" fill="currentColor" />
+                <circle cx="10" cy="18" r="2" fill="currentColor" />
+              </svg>
+            </button>
+            <button
+              onClick={() => handleSpin(true)}
+              disabled={isSpinning}
+              className={styles.spinButton}
+            >
+              {isSpinning ? "Spinning..." : "Spin Again"}
+            </button>
+          </div>
         </main>
       ) : (
-        // Desktop or before spin: Show wheel with optional card
+        // Desktop or before spin
         <main className={selectedProduct ? styles.mainContentHorizontal : styles.mainContent}>
-          {/* Description Text */}
+          {/* Landing text (pre-spin only) */}
           {!selectedProduct && (
-            <div className={styles.descriptionText}>
-              Not sure what to buy for your loved one or friend? Looking for a random product to buy?
-              This Random Gift Generator will generate a random Amazon product to help inspire your purchase!
-            </div>
+            <>
+              <h1 className={styles.landingHeadline}>
+                Discover Your Next <span>Gift</span>
+              </h1>
+              <p className={styles.landingSubtitle}>
+                Not sure what to buy? Spin the wheel and let us surprise you with a random Amazon product.
+              </p>
+            </>
           )}
 
-          {/* Left side: Wheel + Button */}
+          {/* Wheel + Button */}
           <div className={styles.wheelSection}>
-            <div className={styles.wheelContainer}>
+            <div className={containerClasses}>
               <img
                 src="/images/wheel.png"
                 fetchPriority="high"
                 alt="Wheel of Gifts"
-                className={`${styles.wheel} ${isSpinning ? styles.wheelSpinning : ''}`}
+                className={wheelClasses}
                 style={{ transform: `rotate(${rotation}deg)` }}
               />
               <img
                 src="/images/pointer.png"
                 fetchPriority="high"
                 alt="Wheel Pointer"
-                className={styles.pointer}
+                className={pointerClasses}
               />
             </div>
 
-            <button
-              onClick={() => handleSpin(false)}
-              disabled={isSpinning}
-              className={styles.spinButton}
-            >
-              {isSpinning ? "Spinning..." : "Spin the Wheel!"}
-            </button>
+            <div className={styles.buttonRow}>
+              <button className={styles.filterToggle} onClick={() => setFilterOpen(true)} aria-label="Open filters">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="4" y1="6" x2="20" y2="6" />
+                  <line x1="4" y1="12" x2="20" y2="12" />
+                  <line x1="4" y1="18" x2="20" y2="18" />
+                  <circle cx="8" cy="6" r="2" fill="currentColor" />
+                  <circle cx="16" cy="12" r="2" fill="currentColor" />
+                  <circle cx="10" cy="18" r="2" fill="currentColor" />
+                </svg>
+              </button>
+              <button
+                onClick={() => handleSpin(false)}
+                disabled={isSpinning}
+                className={styles.spinButton}
+              >
+                {isSpinning ? "Spinning..." : "Spin the Wheel!"}
+              </button>
+            </div>
           </div>
 
-          {/* Right side: Product Card (desktop only) */}
+          {/* Product Card (desktop only) */}
           {selectedProduct && !isMobile && (
             <div className={styles.productSection}>
               <ProductCard product={selectedProduct} />
@@ -184,7 +252,6 @@ export default function Home() {
           )}
         </main>
       )}
-
     </div>
   );
 }

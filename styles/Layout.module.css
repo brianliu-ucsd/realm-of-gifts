@@ -1,57 +1,95 @@
+/* ===== Navbar ===== */
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: #f8f4e8;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  border-bottom: 1px solid #e5dfd3;
+  padding: 0.75rem 2rem;
+  background: rgba(30, 30, 36, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-subtle);
   flex-shrink: 0;
 }
 
-.navbarLogo {
+.navLeft {
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
-.navbarLogo:hover {
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  transition: opacity var(--transition-fast);
+}
+
+.logoLink:hover {
   opacity: 0.8;
 }
 
-.navbarLogo img {
-  height: 50px;
+.logoImg {
+  height: 44px;
   width: auto;
+  filter: drop-shadow(0 0 4px rgba(245, 166, 35, 0.15));
 }
 
-.navbarLink {
-  color: #000000;
-  text-decoration: none;
-  font-size: 1rem;
+.navLink {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
   font-weight: 500;
   padding: 0.5rem 0;
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
+  letter-spacing: 0.02em;
 }
 
-.navbarLink:hover {
-  color: #a99e9e;
+.navLink:hover {
+  color: var(--color-text-primary);
 }
 
+/* ===== Main ===== */
 .main {
   flex: 1;
-  overflow: 'hidden';
+  overflow: hidden;
 }
 
+/* ===== Footer ===== */
 .footer {
-  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 0.9rem;
-  color: #000000;
-  background-color: #f8f4e8;
-  border-top: 1px solid #e5dfd3;
+  padding: 1rem 1.5rem;
+  background: var(--color-bg-tertiary);
+  border-top: 1px solid var(--color-border-subtle);
   flex-shrink: 0;
-  padding: 0.5rem 0.5rem;
+}
+
+.footerText {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  max-width: 600px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .logoImg {
+    height: 36px;
+  }
+
+  .footer {
+    padding: 0.75rem 1rem;
+  }
 }

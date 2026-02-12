@@ -1,5 +1,13 @@
+import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import '../styles/globals.css'
 import styles from '../styles/Layout.module.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export default function RootLayout({
   children,
@@ -7,41 +15,31 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" style={{ margin: 0, padding: 0 }}>
+    <html lang="en" className={inter.variable}>
       <head>
         <link rel="canonical" href="https://realmofgifts.com/" />
         <link rel="icon" href="/images/logo_only.png" />
         <title>Realm of Gifts | Random Gift Generator</title>
         <meta name="description" content="Not sure what to buy for your loved one or friend? Looking for a random product to buy? This Random Gift Generator will generate a random Amazon product to help inspire your purchase!"></meta>
       </head>
-      {/* Body does not support CSS components */}
-      <body style={{
-        margin: 0,
-        padding: 0,
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column'
-      }}>
+      <body>
         {/* Navbar */}
         <nav className={styles.navbar}>
-          {/* Logo and Site Name */}
-          <div className={styles.navbarLogo}>
-            <a href="\">
+          <div className={styles.navLeft}>
+            <a href="/" className={styles.logoLink}>
               <img
                 src="/images/logo.png"
                 fetchPriority="high"
                 alt="Realm of Gifts Logo"
+                className={styles.logoImg}
               />
             </a>
           </div>
-
-          {/* About Us Link */}
-          <a
-            href="#about"
-            className={styles.navbarLink}
-          >
-            About Us
-          </a>
+          <div className={styles.navRight}>
+            <a href="#about" className={styles.navLink}>
+              About Us
+            </a>
+          </div>
         </nav>
 
         {/* Main Content Area */}
@@ -51,7 +49,9 @@ export default function RootLayout({
 
         {/* Footer */}
         <footer className={styles.footer}>
-          ⚠️ Disclaimer: These are Amazon affiliate links. As an Amazon Associate, we may earn from qualifying purchases.
+          <p className={styles.footerText}>
+            Disclaimer: These are Amazon affiliate links. As an Amazon Associate, we may earn from qualifying purchases.
+          </p>
         </footer>
 
         <Analytics />
