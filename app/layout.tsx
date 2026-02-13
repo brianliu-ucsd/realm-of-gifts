@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     title: 'Realm of Gifts | Random Gift Generator',
     description: siteDescription,
     url: '/',
-    images: [{ url: '/images/logo.png', alt: 'Realm of Gifts Logo' }],
+    images: [{ url: '/images/logo-dark.png', alt: 'Realm of Gifts Logo' }],
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Realm of Gifts | Random Gift Generator',
     description: siteDescription,
-    images: ['/images/logo.png'],
+    images: ['/images/logo-dark.png'],
   },
   robots: {
     index: true,
