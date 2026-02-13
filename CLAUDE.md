@@ -41,6 +41,12 @@ An all-in-one gift discovery website at **realmofgifts.com**. Helps users find g
 - Ensure proper heading hierarchy and semantic HTML.
 - Focus on optimizing the existing experience (no content pages planned yet).
 
+### 3. Increased Visibility
+- Gift guide pages for SEO: (e.g.) /gifts/under-25 or /gifts/for-him... includes products AND a unique "Spin the Wheel" which is essentially our spinner with the filters applied. Name pages with long-tail keywords with buying intent, like "unique gifts for 12 year old girl" and underserved niches like "gifts for new homeowners". Find queries that lead to low-quality sites - seek to beat them with a better UX.
+- Pinterest pins?
+- Sharable spin results (every user becomes a marketer)
+- Seasonal pushes on Reddit/socials
+
 ## Commands
 - `npm run dev` — Start dev server (localhost:3000)
 - `npm run build` — Production build

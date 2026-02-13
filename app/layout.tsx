@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import '../styles/globals.css'
@@ -9,6 +10,65 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+const siteDescription =
+  'Not sure what to buy for your loved one or friend? Looking for a random product to buy? This Random Gift Generator will generate a random Amazon product to help inspire your purchase!'
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Realm of Gifts | Random Gift Generator',
+    template: '%s | Realm of Gifts',
+  },
+  description: siteDescription,
+  metadataBase: new URL('https://realmofgifts.com'),
+  alternates: {
+    canonical: '/',
+  },
+  icons: {
+    icon: '/images/logo_only.png',
+    apple: '/images/logo_only.png',
+  },
+  openGraph: {
+    type: 'website',
+    siteName: 'Realm of Gifts',
+    title: 'Realm of Gifts | Random Gift Generator',
+    description: siteDescription,
+    url: '/',
+    images: [{ url: '/images/logo.png', alt: 'Realm of Gifts Logo' }],
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Realm of Gifts | Random Gift Generator',
+    description: siteDescription,
+    images: ['/images/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://realmofgifts.com/#organization',
+      name: 'Realm of Gifts',
+      url: 'https://realmofgifts.com',
+      logo: 'https://realmofgifts.com/images/logo.png',
+      description: siteDescription,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://realmofgifts.com/#website',
+      url: 'https://realmofgifts.com',
+      name: 'Realm of Gifts',
+      publisher: { '@id': 'https://realmofgifts.com/#organization' },
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -16,13 +76,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
-        <link rel="canonical" href="https://realmofgifts.com/" />
-        <link rel="icon" href="/images/logo_only.png" />
-        <title>Realm of Gifts | Random Gift Generator</title>
-        <meta name="description" content="Not sure what to buy for your loved one or friend? Looking for a random product to buy? This Random Gift Generator will generate a random Amazon product to help inspire your purchase!"></meta>
-      </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {/* Navbar */}
         <nav className={styles.navbar}>
           <div className={styles.navLeft}>
