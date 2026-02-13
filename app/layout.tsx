@@ -11,11 +11,11 @@ const inter = Inter({
 })
 
 const siteDescription =
-  'Not sure what to buy for your loved one or friend? Looking for a random product to buy? This Random Gift Generator will generate a random Amazon product to help inspire your purchase!'
+  'Discover the perfect gift with Realm of Gifts — spin our random gift generator, browse curated gift guides, and find something they\'ll love.'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Realm of Gifts | Random Gift Generator',
+    default: 'Realm of Gifts | The Gift Destination for Everyone',
     template: '%s | Realm of Gifts',
   },
   description: siteDescription,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'Realm of Gifts',
-    title: 'Realm of Gifts | Random Gift Generator',
+    title: 'Realm of Gifts | The Gift Destination for Everyone',
     description: siteDescription,
     url: '/',
     images: [{ url: '/images/logo-dark.png', alt: 'Realm of Gifts Logo' }],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Realm of Gifts | Random Gift Generator',
+    title: 'Realm of Gifts | The Gift Destination for Everyone',
     description: siteDescription,
     images: ['/images/logo-dark.png'],
   },
@@ -94,8 +94,11 @@ export default function RootLayout({
             </a>
           </div>
           <div className={styles.navRight}>
-            <a href="#about" className={styles.navLink}>
-              About Us
+            <a href="/random-product-generator" className={styles.navLink}>
+              Gift Generator
+            </a>
+            <a href="/guides" className={styles.navLink}>
+              Gift Guides
             </a>
           </div>
         </nav>

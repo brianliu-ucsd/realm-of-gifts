@@ -57,7 +57,9 @@
 /* ===== Main ===== */
 .main {
   flex: 1;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 /* ===== Footer ===== */
@@ -76,7 +78,7 @@
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
   line-height: 1.4;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 /* ===== Responsive ===== */

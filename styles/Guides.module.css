@@ -1,0 +1,119 @@
+/* ===== Guides Index ===== */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+}
+
+.heading {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-glass);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.cardTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.cardDescription {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.cardArrow {
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* ===== Guide Detail Stub ===== */
+.detailPage {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+}
+
+.backLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  display: inline-block;
+  transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+  color: var(--color-text-primary);
+}
+
+.detailTitle {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.comingSoon {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-glass);
+  border: 1px solid var(--color-border-glass);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .page {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .heading {
+    font-size: var(--font-size-2xl);
+  }
+
+  .detailPage {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .detailTitle {
+    font-size: var(--font-size-2xl);
+  }
+}

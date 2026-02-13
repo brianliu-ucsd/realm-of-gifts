@@ -36,12 +36,7 @@ An all-in-one gift discovery website at **realmofgifts.com**. Helps users find g
 - Filter results must gracefully handle small result sets (current pool is only 11 products).
 - Schema should be forward-compatible with Amazon Product Advertising API (future integration after 10 affiliate sales).
 
-### 2. Technical SEO
-- Add sitemap.xml, robots.txt, structured data (JSON-LD), Open Graph / Twitter card meta tags.
-- Ensure proper heading hierarchy and semantic HTML.
-- Focus on optimizing the existing experience (no content pages planned yet).
-
-### 3. Increased Visibility
+### 2. Increased Visibility
 - Gift guide pages for SEO: (e.g.) /gifts/under-25 or /gifts/for-him... includes products AND a unique "Spin the Wheel" which is essentially our spinner with the filters applied. Name pages with long-tail keywords with buying intent, like "unique gifts for 12 year old girl" and underserved niches like "gifts for new homeowners". Find queries that lead to low-quality sites - seek to beat them with a better UX.
 - Pinterest pins?
 - Sharable spin results (every user becomes a marketer)
@@ -53,7 +48,7 @@ An all-in-one gift discovery website at **realmofgifts.com**. Helps users find g
 - `npm run test` — Not yet implemented
 
 ## MCP Integrations
-- **Playwright MCP:** Browser automation for viewing/testing the frontend locally. Navigate to `localhost:3001` to inspect the running dev server.
+- **Playwright MCP:** Browser automation for viewing/testing the frontend locally. Navigate to `localhost:3000` to inspect the running dev server.
 - **Vercel MCP:** Connected to the Vercel account hosting this project. Use for checking deployments, build logs, runtime logs, and project settings.
 
 ## Claude Folder
